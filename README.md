@@ -6,6 +6,8 @@ Le WordPress roule. Je vous ais crée un script SQL juste à coté. Il est tres 
 Sinon, utilisez les VirtualHost de votre serveur. Il faut que la racine du serveur pointe sur le dossier WordPress. Ne vous amusez pas a devoir cliquer sur le dossier wordpress sur votre web browser. Touts nos liens seront surrement absolu, et il est primordiale que nous ayons la meme structure ok?!
 On la fais pour le zend skeleton. Dans frefox il faut que vous ayez un truc du genre PTUT.fr qui a pour racine le dossier WordPress. Je vous laisse vous demerder pour ca...
 
+super lien pour ca 
+http://blog.smarchal.com/creer-un-virtualhost-avec-wampserver/
 
 Sinon, démerdez vous avec GitHub les gars. N'utiisez pas l'interface graphique ! C'est de la grosse merde croyez moi sur parole pitié. Allez y au terminal.
 J'ai ici un site web pense bête de ouf !
