@@ -1,4 +1,4 @@
-< ?php
+<?php
 /**
  * Plugin Name: ScientificArticle
  * Plugin URI: URI du plugin (si vous le mettez a disposition sur un site)
@@ -9,5 +9,4 @@
  * License: GPL v2
  */
 
-
- 
+require_once('Functions/create_MetaBoxes.php');
