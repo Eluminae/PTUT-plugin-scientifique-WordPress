@@ -22,14 +22,12 @@ if (is_admin()){
         'labels' => $labels,
         'supports' => array('title','thumbnail')
     ));
-    add_image_size('article',1000,300,true);
 }
 
 //contenu de la boite auteur
 function GAS_MetaBox_callback($post)
 {
     wp_nonce_field( basename( __FILE__ ), 'auteur_nonce' );
-    $metaBoxAuteur_stored_meta = get_post_meta( $post->ID );
     ?>
    <ul>
         <li>
@@ -59,25 +57,46 @@ function GAS_pdf_metabox($post){
   ?>
   <input id="upload_pdf_button" class="button button-primary button-large" type="button" value="Télécharger un document pdf" />
   <label for="url_pdf"></label><input id="url_pdf" style="width: 450px;" type="text" name="url_pdf" value="<?php echo esc_url( $url_pdf ); ?>" />
-
+  <script>
+        jQuery(document).ready(function($) {
+            // on initialise une variable qui nous permettra de détecter le champ à remplir
+            var formfield = null;
+            // on détecte un clic sur le bouton
+            $('#upload_pdf_button').click(function() {
+                $('html').addClass('pdf');
+                // on cible notre champ
+                formfield = $('#url_pdf').attr('name');
+                // on charge la fenêtre
+                tb_show('', 'media-upload.php?type=image&TB_iframe=true');
+                // on empêche toute action supplémentaire
+                return false;
+            });
+            // on duplique la function send_to_editor
+            window.original_send_to_editor = window.send_to_editor;
+            // notre fonction
+                        window.send_to_editor = function(html){
+            // la varible qui contient notre url DE FICHIER
+                            var fileurl;
+            // si la fenetre est bien chargé à partir du bouton
+                if (formfield != null) {
+                    // on récupère l'url (si besoin, pour comprendre, vous pouvez faire un console.log de html)
+                    fileurl = $(html).filter('a').attr('href');
+                    // on écrit l'URL dans notre champ texte
+                    $('#url_pdf').val(fileurl);
+                    // on shoot la boite
+                    tb_remove();
+                    // on vire la classe pdf
+                    $('html').removeClass('pdf');
+                    // on vide la variable formfield
+                    formfield = null;
+                } else {
+                    // si la fenêtre n'est pas chargée à partir du bouton, alors comportement normal
+                    window.original_send_to_editor(html);
+                }
+            };
+        });
+    </script>
   <?php
-  // les dépendances
-    wp_enqueue_script( 'media-upload' );
-    wp_enqueue_script( 'thickbox' );
-    wp_enqueue_script( 'quicktags' );
-    wp_enqueue_script( 'jquery-ui-resizable' );
-    wp_enqueue_script( 'jquery-ui-draggable' );
-    wp_enqueue_script( 'jquery-ui-button' );
-    wp_enqueue_script( 'jquery-ui-position' );
-    wp_enqueue_script( 'jquery-ui-dialog' );
-    wp_enqueue_script( 'wpdialogs' );
-    wp_enqueue_script( 'wplink' );
-    wp_enqueue_script( 'wpdialogs-popup' );
-    wp_enqueue_script( 'wp-fullscreen' );
-    wp_enqueue_script( 'editor' );
-    wp_enqueue_script( 'word-count' );
-    wp_enqueue_style( 'thickbox' );
-    wp_enqueue_script( 'pdf-meta-box', get_bloginfo('template_url').'/js/upload_pdf.js', array( 'jquery','media-upload','thickbox' ) );
 }
 //ajoute toutes les meta_boxes
 function GAS_add_custom_meta_box($post)
