@@ -1,0 +1,7 @@
+  
+DROP DATABASE IF EXISTS DB_WordPress;
+CREATE DATABASE DB_WordPress;
+
+GRANT ALL ON DB_WordPress.* TO 'WordPress'@'localhost' IDENTIFIED BY 'rE3F73SZw1Fl0hK';
+
+
