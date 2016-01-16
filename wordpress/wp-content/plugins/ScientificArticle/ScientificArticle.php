@@ -6,7 +6,8 @@
  * Version: Version du plugin (si vous le faites évoluer avec un système de version)
  * Author: IUT Informatique Lyon 1
  * Author URI: l'URI de votre site
- * License: La ou les license(s) relative(s) à votre plugin
+ * License: GPL v2
  */
- 
+
+
  
