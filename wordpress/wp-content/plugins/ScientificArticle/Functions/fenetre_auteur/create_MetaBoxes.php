@@ -13,11 +13,11 @@ function ScientificArticle_auteur_metabox_champs($post)
 {
 
     // on recupere les valeurs si on modifie un article
-    $nom      = get_post_meta($post->ID,'_auteur_nom',true);
-    $prenom   = get_post_meta($post->ID,'_auteur_prenom',true);
-    $profession  = get_post_meta($post->ID,'_auteur_profession',true);
-    $affiliation = get_post_meta($post->ID,'_auteur_affiliation',true);
-    $site  = get_post_meta($post->ID,'_auteur_site',true);
+    $nom      = get_post_meta($post->ID,'_ScientificArticle_auteur_nom',true);
+    $prenom   = get_post_meta($post->ID,'_ScientificArticle_auteur_prenom',true);
+    $profession  = get_post_meta($post->ID,'_ScientificArticle_auteur_profession',true);
+    $affiliation = get_post_meta($post->ID,'_ScientificArticle_auteur_affiliation',true);
+    $site  = get_post_meta($post->ID,'_ScientificArticle_auteur_site',true);
 
     ?>
     <ul>
