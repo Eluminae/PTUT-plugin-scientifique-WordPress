@@ -1,28 +1,17 @@
 <?php
 
+// empeche d'acceder à cette page via l'url !
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
+
+// implemente entre autre la fonction add_meta_box
+include_once($_SERVER["DOCUMENT_ROOT"].'/wp-admin/includes/template.php');
+
+
 if (is_admin()){
-    add_action('init','GAS_MetaBox_init');
-    add_action("add_meta_boxes", "GAS_add_custom_meta_box");
+    GAS_add_custom_meta_box();
 }
- function GAS_MetaBox_init($post){
 
-    $labels=array(
-        'singular_name'=>'Article scientifique',
-        'menu_name'=>'Articles scientifiques',
-        'edit_item'=>'Editer un article',
-        'new_item'=>'Ajouter un article',
-        'add_new' => 'Ajouter un article',
-        'add_new_item' => 'Ajouter un article',
-        'search_items'=>'Rechercher un article'
-    );
-
-    register_post_type('article',array(
-        'public' =>true,
-        'publicity_queryable'=>false,
-        'labels' => $labels,
-        'supports' => array('title','thumbnail')
-    ));
-}
 
 //contenu de la boite auteur
 function GAS_MetaBox_callback($post)
@@ -99,7 +88,7 @@ function GAS_pdf_metabox($post){
   <?php
 }
 //ajoute toutes les meta_boxes
-function GAS_add_custom_meta_box($post)
+function GAS_add_custom_meta_box()
 {
     add_meta_box("auteur", "Auteur", "GAS_MetaBox_callback",'article','side','high');
     //changement du nom de la feature image box
@@ -108,6 +97,8 @@ function GAS_add_custom_meta_box($post)
     //boite pour lier un fichier pdf à l'article
     add_meta_box( "url_du_pdf", "Fichier à télécharger", "GAS_pdf_metabox",'article', 'advanced', 'high' );
 }
+
+
 
 //on sauvegarde les données du pdf
 add_action( 'save_post', 'pdf_meta_save' );
@@ -146,3 +137,4 @@ function auteur_meta_save( $post_id ) {
     }
  
 }
+
