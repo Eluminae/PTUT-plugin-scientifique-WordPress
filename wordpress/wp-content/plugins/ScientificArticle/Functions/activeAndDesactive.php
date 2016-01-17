@@ -6,45 +6,47 @@
  * Time: 10:23
  */
 
-// empeche d'acceder à cette page via l'url !
-defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-function ScientificArticle_setup_post_type() {
-
-    $labels=array(
-        'singular_name'=>'Article scientifique',
-        'menu_name'=>'Articles scientifiques',
-        'edit_item'=>'Editer un article',
-        'new_item'=>'Ajouter un article',
-        'add_new' => 'Ajouter un article',
-        'add_new_item' => 'Ajouter un article',
-        'search_items'=>'Rechercher un article'
-    );
-
-    register_post_type('article',array(
-        'public' =>true,
-        'publicity_queryable'=>false,
-        'labels' => $labels,
-        'supports' => array('title','thumbnail')
-    ));
+// on inclu les deux init
+require_once ( dirname( __FILE__ ) . '/fenetre_article/init.php' );
+require_once ( dirname( __FILE__ ) . '/fenetre_auteur/init.php' );
 
 
+
+// on setup les deux fenetres article et auteur
+function ScientificArticle_setup_post_type(){
+    ScientificArticle_article_init();
+    ScientificArticle_auteur_init();
 }
+// permet d'executer cette fonction automatiquement à chaque load de page (en gros)
 add_action( 'init', 'ScientificArticle_setup_post_type' );
 
-function ScientificArticle_install(){
+
+
+
+
+
+
+// fonction executée à l'activation et à la desactivation du plugin
+function ScientificArticle_activation(){
+
+
 
 
     // Clear the permalinks after the post type has been registered
     flush_rewrite_rules();
 }
-register_activation_hook(__FILE__, 'ScientificArticle_install' );
+register_activation_hook(__FILE__, 'ScientificArticle_activation' );
 
 
 
-function ScientificArticle_uninstall(){
+function ScientificArticle_desactivation(){
+
+
+
+
     // Clear the permalinks to remove our post type's rules
     flush_rewrite_rules();
 }
-register_deactivation_hook(__FILE__, 'ScientificArticle_uninstall' );
+register_deactivation_hook(__FILE__, 'ScientificArticle_desactivation' );
 

@@ -8,39 +8,8 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 include_once($_SERVER["DOCUMENT_ROOT"].'/wp-admin/includes/template.php');
 
 
-if (is_admin()){
-    GAS_add_custom_meta_box();
-}
-
-
-//contenu de la boite auteur
-function GAS_MetaBox_callback($post)
-{
-    wp_nonce_field( basename( __FILE__ ), 'auteur_nonce' );
-    ?>
-   <ul>
-        <li>
-            <label>Nom: </label><br/>
-            <input name="auteur_name" type="text" value="">
-        </li>
-        <li>
-            <label>Profession: </label><br/>
-            <input name="auteur_job" type="text" value="">
-        </li>
-        <li>
-            <label>Affiliation: </label><br/>
-            <input name="auteur_affiliation" type="text" value="">
-        </li>
-        <li>
-            <label>Site Web: </label><br/>
-            <input name="auteur_site" type="text" value="">
-        </li>
-    <ul/>
-    <?php
-}
-
 //contenu de la boite avec l'upload de fichier pdf
-function GAS_pdf_metabox($post){
+function ScientificArticle_article_GAS_pdf_metabox($post){
     
   $url_pdf = get_post_meta( $post->ID, 'url_pdf', true );
   ?>
@@ -88,21 +57,24 @@ function GAS_pdf_metabox($post){
   <?php
 }
 //ajoute toutes les meta_boxes
-function GAS_add_custom_meta_box()
+function ScientificArticle_cree_custom_metaboxes()
 {
-    add_meta_box("auteur", "Auteur", "GAS_MetaBox_callback",'article','side','high');
+
     //changement du nom de la feature image box
     remove_meta_box( 'postimagediv', 'rotator', 'side' );
-    add_meta_box('postimagediv', __('Miniature'), 'post_thumbnail_meta_box','article', 'advanced', 'high');
+    add_meta_box('postimagediv', 'Miniature', 'post_thumbnail_meta_box','article', 'advanced', 'high');
+
+
     //boite pour lier un fichier pdf à l'article
-    add_meta_box( "url_du_pdf", "Fichier à télécharger", "GAS_pdf_metabox",'article', 'advanced', 'high' );
+    add_meta_box( "url_du_pdf", "Fichier à télécharger", "ScientificArticle_article_GAS_pdf_metabox",'article', 'advanced', 'high' );
+
 }
 
 
 
 //on sauvegarde les données du pdf
 add_action( 'save_post', 'pdf_meta_save' );
-function pdf_meta_save( $post_ID ){
+function ScientificArticle_article_pdf_meta_save( $post_ID ){
   if ( isset( $_POST[ 'url_pdf' ] ) ) {
     update_post_meta( $post_ID, '_url_pdf', esc_url_raw( $_POST[ 'url_pdf' ] ) );
   }
@@ -110,7 +82,9 @@ function pdf_meta_save( $post_ID ){
 
 //sauvegarde les données de l'auteur
 add_action( 'save_post', 'auteur_meta_save' );
-function auteur_meta_save( $post_id ) {
+
+
+function ScientificArticle_article_auteur_meta_save( $post_id ) {
  
     // Checks save status
     $is_autosave = wp_is_post_autosave( $post_id );

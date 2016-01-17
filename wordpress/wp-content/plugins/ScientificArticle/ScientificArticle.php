@@ -26,16 +26,5 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 
-// script à executer à l'activation et à la desactivation du plugin
-// dans l'objectif de créer les DB
 require_once ( dirname( __FILE__ ) . '/Functions/activeAndDesactive.php' );
 
-// création du menu çà gauche ( appel à la fonction ScientificArticle_setup_post_type() )
-//add_action( 'init', 'ScientificArticle_setup_post_type' );
-/*
-register_activation_hook(__FILE__, 'ScientificArticle_install' );
-register_deactivation_hook(__FILE__, 'ScientificArticle_uninstall' );
-*/
-
-// creation des boites de la fenetre nouvel article
-require_once('Functions/create_MetaBoxes.php');
