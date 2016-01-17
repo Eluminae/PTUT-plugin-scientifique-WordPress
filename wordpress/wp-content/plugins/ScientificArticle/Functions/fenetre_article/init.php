@@ -32,7 +32,7 @@ function ScientificArticle_article_setup_post_type()
         'search_items' => 'Rechercher un article' // ce qui est ecrit sur le bouton de recherche
     );
 
-    register_post_type('article', array(
+    register_post_type('SA_article', array( // 'SA_article' car ScientificArticle_article est trop long ^^
         'public' => true,
         'publicity_queryable' => false,
         'labels' => $labels,

@@ -46,7 +46,7 @@ function ScientificArticle_auteur_create_metaboxes()
         "auteur", // id unique à la meta box
         "Auteur", // titre affiché
         "ScientificArticle_auteur_metabox_champs", // fonction affichage
-        'auteur', // postType id
+        'SA_auteur', // postType id
         'advanced', // position de base
         'high'
     );

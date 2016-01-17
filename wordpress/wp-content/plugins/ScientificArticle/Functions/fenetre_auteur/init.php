@@ -38,7 +38,7 @@ function ScientificArticle_auteur_setup_post_type()
         'search_items' => 'Rechercher un auteur' // ce qui est ecrit sur le bouton de recherche
     );
 
-    register_post_type('auteur', array(
+    register_post_type('SA_auteur', array( // 'SA_auteur' car ScientificArticle_auteur est trop long ^^
         'public' => true,
         'publicity_queryable' => false,
         'labels' => $labels,

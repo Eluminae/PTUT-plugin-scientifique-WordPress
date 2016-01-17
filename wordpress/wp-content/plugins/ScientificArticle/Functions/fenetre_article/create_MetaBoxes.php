@@ -62,11 +62,11 @@ function ScientificArticle_cree_custom_metaboxes()
 
     //changement du nom de la feature image box
     remove_meta_box( 'postimagediv', 'rotator', 'side' );
-    add_meta_box('postimagediv', 'Miniature', 'post_thumbnail_meta_box','article', 'advanced', 'high');
+    add_meta_box('postimagediv', 'Miniature', 'post_thumbnail_meta_box','SA_article', 'advanced', 'high');
 
 
     //boite pour lier un fichier pdf à l'article
-    add_meta_box( "url_du_pdf", "Fichier à télécharger", "ScientificArticle_article_GAS_pdf_metabox",'article', 'advanced', 'high' );
+    add_meta_box( "url_du_pdf", "Fichier à télécharger", "ScientificArticle_article_GAS_pdf_metabox",'SA_article', 'advanced', 'high' );
 
 }
 
