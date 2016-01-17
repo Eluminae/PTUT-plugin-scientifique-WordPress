@@ -9,28 +9,32 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/wp-admin/includes/template.php');
 
 
 //contenu de la boite auteur
-function ScientificArticle_auteur_metabox()
+function ScientificArticle_auteur_metabox_champs()
 {
     wp_nonce_field( basename( __FILE__ ), 'auteur_nonce' );
     ?>
+
+
     <ul>
         <li>
             <label>Nom: </label><br/>
-            <input name="auteur_name" type="text" value="">
+            <input name="auteur_name" type="text" value=""/>
         </li>
         <li>
             <label>Profession: </label><br/>
-            <input name="auteur_job" type="text" value="">
+            <input name="auteur_job" type="text" value=""/>
         </li>
         <li>
             <label>Affiliation: </label><br/>
-            <input name="auteur_affiliation" type="text" value="">
+            <input name="auteur_affiliation" type="text" value=""/>
         </li>
         <li>
             <label>Site Web: </label><br/>
-            <input name="auteur_site" type="text" value="">
+            <input name="auteur_site" type="text" value=""/>
         </li>
-        <ul/>
+    </ul>
+
+
     <?php
 }
 
@@ -41,7 +45,7 @@ function ScientificArticle_auteur_create_metaboxes()
     add_meta_box(
         "auteur", // id unique à la meta box
         "Auteur", // titre affiché
-        "ScientificArticle_auteur_metabox", // fonction affichage
+        "ScientificArticle_auteur_metabox_champs", // fonction affichage
         'auteur', // postType id
         'advanced', // position de base
         'high'

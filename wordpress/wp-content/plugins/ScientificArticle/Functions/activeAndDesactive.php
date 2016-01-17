@@ -27,7 +27,7 @@ add_action( 'init', 'ScientificArticle_setup_post_type' );
 
 
 
-// fonction executée à l'activation et à la desactivation du plugin
+// fonction executée à l'activation du plugin
 function ScientificArticle_activation(){
 
 
@@ -39,7 +39,7 @@ function ScientificArticle_activation(){
 register_activation_hook(__FILE__, 'ScientificArticle_activation' );
 
 
-
+// fonction executée à la desactivation du plugin
 function ScientificArticle_desactivation(){
 
 
