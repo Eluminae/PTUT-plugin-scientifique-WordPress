@@ -74,7 +74,7 @@ function ScientificArticle_cree_custom_metaboxes()
 
 //on sauvegarde les données du pdf
 add_action( 'save_post', 'pdf_meta_save' );
-function ScientificArticle_article_pdf_meta_save( $post_ID ){
+function pdf_meta_save( $post_ID ){
   if ( isset( $_POST[ 'url_pdf' ] ) ) {
     update_post_meta( $post_ID, '_url_pdf', esc_url_raw( $_POST[ 'url_pdf' ] ) );
   }
@@ -84,7 +84,7 @@ function ScientificArticle_article_pdf_meta_save( $post_ID ){
 add_action( 'save_post', 'auteur_meta_save' );
 
 
-function ScientificArticle_article_auteur_meta_save( $post_id ) {
+function auteur_meta_save( $post_id ) {
  
     // Checks save status
     $is_autosave = wp_is_post_autosave( $post_id );

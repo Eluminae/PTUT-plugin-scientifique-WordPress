@@ -25,7 +25,7 @@ function ScientificArticle_auteur_init(){
 }
 
 
-function ScientificArticle_auteur_setup_post_type($post)
+function ScientificArticle_auteur_setup_post_type()
 {
     // post type des auteurs
     $labels = array(
