@@ -9,32 +9,39 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/wp-admin/includes/template.php');
 
 
 //contenu de la boite auteur
-function ScientificArticle_auteur_metabox_champs()
+function ScientificArticle_auteur_metabox_champs($post)
 {
-    wp_nonce_field( basename( __FILE__ ), 'auteur_nonce' );
+
+    // on recupere les valeurs si on modifie un article
+    $nom      = get_post_meta($post->ID,'_auteur_nom',true);
+    $prenom   = get_post_meta($post->ID,'_auteur_prenom',true);
+    $profession  = get_post_meta($post->ID,'_auteur_profession',true);
+    $affiliation = get_post_meta($post->ID,'_auteur_affiliation',true);
+    $site  = get_post_meta($post->ID,'_auteur_site',true);
+
     ?>
-
-
     <ul>
-        <li>
-            <label>Nom: </label><br/>
-            <input name="auteur_name" type="text" value=""/>
-        </li>
-        <li>
-            <label>Profession: </label><br/>
-            <input name="auteur_job" type="text" value=""/>
-        </li>
-        <li>
-            <label>Affiliation: </label><br/>
-            <input name="auteur_affiliation" type="text" value=""/>
-        </li>
-        <li>
-            <label>Site Web: </label><br/>
-            <input name="auteur_site" type="text" value=""/>
-        </li>
-    </ul>
-
-
+    <li>
+        <label>Nom: </label><br/>
+        <input name="auteur_nom" type="text" value="<?php echo esc_html($nom) ?>">
+    </li>
+    <li>
+        <label>Prenom: </label><br/>
+        <input name="auteur_prenom" type="text" value="<?php echo esc_html($prenom) ?>">
+    </li>
+    <li>
+        <label>Profession: </label><br/>
+        <input name="auteur_profession" type="text" value="<?php echo esc_html($profession) ?>">
+    </li>
+    <li>
+        <label>Affiliation: </label><br/>
+        <input name="auteur_affiliation" type="text" value="<?php echo esc_html($affiliation) ?>">
+    </li>
+    <li>
+        <label>Site Web: </label><br/>
+        <input name="auteur_site" type="text" value="<?php echo esc_html($site) ?>">
+    </li>
+    <ul/>
     <?php
 }
 

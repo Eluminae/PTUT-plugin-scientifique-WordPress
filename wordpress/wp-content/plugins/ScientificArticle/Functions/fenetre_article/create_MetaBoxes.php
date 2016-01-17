@@ -2,19 +2,20 @@
 
 // empeche d'acceder à cette page via l'url !
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
-
-
 // implemente entre autre la fonction add_meta_box
 include_once($_SERVER["DOCUMENT_ROOT"].'/wp-admin/includes/template.php');
 
-
 //contenu de la boite avec l'upload de fichier pdf
 function ScientificArticle_article_GAS_pdf_metabox($post){
-    
-  $url_pdf = get_post_meta( $post->ID, 'url_pdf', true );
+
+  $url_pdf = get_post_meta( $post->ID, '_url_pdf', true );
   ?>
   <input id="upload_pdf_button" class="button button-primary button-large" type="button" value="Télécharger un document pdf" />
-  <label for="url_pdf"></label><input id="url_pdf" style="width: 450px;" type="text" name="url_pdf" value="<?php echo esc_url( $url_pdf ); ?>" />
+  <input id="url_pdf" style="width: 450px;" type="text" name="url_pdf" value="<?php
+                                                                                         $path = esc_url($url_pdf);
+                                                                                         $file = basename($path);
+                                                                                         echo $file;?>" />
+  <?php //du js pour l'upload du fichier?>
   <script>
         jQuery(document).ready(function($) {
             // on initialise une variable qui nous permettra de détecter le champ à remplir
@@ -32,9 +33,9 @@ function ScientificArticle_article_GAS_pdf_metabox($post){
             // on duplique la function send_to_editor
             window.original_send_to_editor = window.send_to_editor;
             // notre fonction
-                        window.send_to_editor = function(html){
+            window.send_to_editor = function(html){
             // la varible qui contient notre url DE FICHIER
-                            var fileurl;
+            var fileurl;
             // si la fenetre est bien chargé à partir du bouton
                 if (formfield != null) {
                     // on récupère l'url (si besoin, pour comprendre, vous pouvez faire un console.log de html)
@@ -52,6 +53,7 @@ function ScientificArticle_article_GAS_pdf_metabox($post){
                     window.original_send_to_editor(html);
                 }
             };
+            return false;
         });
     </script>
   <?php
@@ -59,56 +61,18 @@ function ScientificArticle_article_GAS_pdf_metabox($post){
 //ajoute toutes les meta_boxes
 function ScientificArticle_cree_custom_metaboxes()
 {
-
     //changement du nom de la feature image box
     remove_meta_box( 'postimagediv', 'rotator', 'side' );
     add_meta_box('postimagediv', 'Miniature', 'post_thumbnail_meta_box','SA_article', 'advanced', 'high');
 
-
     //boite pour lier un fichier pdf à l'article
     add_meta_box( "url_du_pdf", "Fichier à télécharger", "ScientificArticle_article_GAS_pdf_metabox",'SA_article', 'advanced', 'high' );
 
+    //on sauvegarde les données du pdf
+    add_action( 'save_post', 'pdf_meta_save' );
 }
-
-
-
-//on sauvegarde les données du pdf
-add_action( 'save_post', 'pdf_meta_save' );
 function pdf_meta_save( $post_ID ){
   if ( isset( $_POST[ 'url_pdf' ] ) ) {
     update_post_meta( $post_ID, '_url_pdf', esc_url_raw( $_POST[ 'url_pdf' ] ) );
   }
 }
-
-//sauvegarde les données de l'auteur
-add_action( 'save_post', 'auteur_meta_save' );
-
-
-function auteur_meta_save( $post_id ) {
- 
-    // Checks save status
-    $is_autosave = wp_is_post_autosave( $post_id );
-    $is_revision = wp_is_post_revision( $post_id );
-    $is_valid_nonce = ( isset( $_POST[ 'auteur_nonce' ] ) && wp_verify_nonce( $_POST[ 'auteur_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
- 
-    // Exits script depending on save status
-    if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
-        return;
-    }
- 
-    // Checks for input and sanitizes/saves if needed
-    if( isset( $_POST[ 'auteur_name' ] ) ) {
-        update_post_meta( $post_id, 'auteur_name', sanitize_text_field( $_POST[ 'auteur_name' ] ) );
-    }
-    if( isset( $_POST[ 'auteur_job' ] ) ) {
-        update_post_meta( $post_id, 'auteur_job', sanitize_text_field( $_POST[ 'auteur_job' ] ) );
-    }
-    if( isset( $_POST[ 'auteur_affiliation' ] ) ) {
-        update_post_meta( $post_id, 'auteur_affiliation', sanitize_text_field( $_POST[ 'auteur_affiliation' ] ) );
-    }
-    if( isset( $_POST[ 'auteur_site' ] ) ) {
-        update_post_meta( $post_id, 'auteur_site', sanitize_text_field( $_POST[ 'auteur_site' ] ) );
-    }
- 
-}
-

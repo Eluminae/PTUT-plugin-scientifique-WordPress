@@ -30,7 +30,7 @@ function ScientificArticle_auteur_setup_post_type()
     // post type des auteurs
     $labels = array(
         'name' => 'Auteur scientifique', // nom du type de post
-        'menu_name' => 'Auteurs scientifiques', // nom affiché
+        'menu_name' => 'Auteurs', // nom affiché
         'edit_item' => 'Modifier un auteur', // ce qui est ecrit sur les boutons pour modifier un post
         'new_item' => 'Modifier un auteur', // aucune idée
         'add_new' => 'Ajouter un auteur', // ce qui est ecrit sur les boutons pour ajouter un post
