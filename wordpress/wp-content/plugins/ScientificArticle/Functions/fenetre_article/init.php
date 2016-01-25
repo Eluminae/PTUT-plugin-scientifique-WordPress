@@ -35,6 +35,7 @@ function ScientificArticle_article_setup_post_type()
     register_post_type('SA_article', array( // 'SA_article' car ScientificArticle_article est trop long ^^
         'public' => true,
         'publicity_queryable' => false,
+        'menu_icon'=>'dashicons-media-document',
         'labels' => $labels,
         'supports' => array('title', 'thumbnail')
     ));
