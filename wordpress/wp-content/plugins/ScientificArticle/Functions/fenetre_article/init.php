@@ -36,6 +36,6 @@ function ScientificArticle_article_setup_post_type()
         'public' => true,
         'publicity_queryable' => false,
         'labels' => $labels,
-        'supports' => array('title', 'thumbnail')
+        'supports' => array('title', 'thumbnail', 'editor')
     ));
 }
