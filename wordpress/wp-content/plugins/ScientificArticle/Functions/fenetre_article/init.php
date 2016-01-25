@@ -10,12 +10,15 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 require_once ( dirname( __FILE__ ) . '/create_MetaBoxes.php' );
+require_once ( dirname( __FILE__ ) . '/publish.php' );
 
 function ScientificArticle_article_init(){
     // setup postType article
     ScientificArticle_article_setup_post_type();
 //on ajoute la boxe
     add_action("add_meta_boxes", "ScientificArticle_cree_custom_metaboxes");
+
+    add_action("save_post", "ScientificArticle_article_save");
 }
 
 function ScientificArticle_article_setup_post_type()
@@ -34,6 +37,7 @@ function ScientificArticle_article_setup_post_type()
     register_post_type('SA_article', array( // 'SA_article' car ScientificArticle_article est trop long ^^
         'public' => true,
         'publicity_queryable' => false,
+        'taxonomies' => array( 'post_tag', 'category' ),
         'labels' => $labels,
         'supports' => array('title', 'thumbnail', 'editor')
     ));
