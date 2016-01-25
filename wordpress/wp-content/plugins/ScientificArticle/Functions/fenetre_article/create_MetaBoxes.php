@@ -109,9 +109,11 @@ function ScientificArticle_article_metabox_addauteur($post){
                     <input name="meta-checkbox[]" type="checkbox" value="<?php echo esc_html(get_the_id()) ?>"
 
                         <?php
-                            // si il est un uteur, on pré-check la checkbox
-                            if (in_array(get_the_id(), $auteurs)){
-                                echo "checked";
+                            if ($auteurs) {
+                                // si il est un auteur, on pré-check la checkbox
+                                if (in_array(get_the_id(), $auteurs)) {
+                                    echo "checked";
+                                }
                             }
                         ?>
 
