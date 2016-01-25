@@ -1,1 +1,6 @@
-/nbproject/private/
+/wordpress/wp-admin/
+/wordpress/wp-content/languages/
+/wordpress/wp-content/uploads/
+/.idea/
+/wordpress/.htaccess
+/wordpress/wp-config.php
