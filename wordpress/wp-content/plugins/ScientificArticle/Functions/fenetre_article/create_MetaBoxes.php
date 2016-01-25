@@ -15,7 +15,7 @@ function ScientificArticle_article_GAS_pdf_metabox($post){
                                                                                          $path = esc_url($url_pdf);
                                                                                          $file = basename($path);
                                                                                          echo $file;?>" />
-  <?php //du js pour l'upload du fichier?>
+  <?php //du js pour l'upload du fichier  ?>
   <script>
         jQuery(document).ready(function($) {
             // on initialise une variable qui nous permettra de détecter le champ à remplir

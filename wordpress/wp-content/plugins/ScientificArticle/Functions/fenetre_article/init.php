@@ -14,7 +14,7 @@ require_once ( dirname( __FILE__ ) . '/create_MetaBoxes.php' );
 function ScientificArticle_article_init(){
     // setup postType article
     ScientificArticle_article_setup_post_type();
-
+//on ajoute la boxe
     add_action("add_meta_boxes", "ScientificArticle_cree_custom_metaboxes");
 }
 
@@ -31,7 +31,6 @@ function ScientificArticle_article_setup_post_type()
         'add_new_item' => 'Ajouter un article', // aucune idée encore
         'search_items' => 'Rechercher un article' // ce qui est ecrit sur le bouton de recherche
     );
-
     register_post_type('SA_article', array( // 'SA_article' car ScientificArticle_article est trop long ^^
         'public' => true,
         'publicity_queryable' => false,
