@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Created by PhpStorm.
@@ -10,12 +11,15 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 require_once ( dirname( __FILE__ ) . '/create_MetaBoxes.php' );
+require_once ( dirname( __FILE__ ) . '/publish.php' );
 
 function ScientificArticle_article_init(){
     // setup postType article
     ScientificArticle_article_setup_post_type();
 
     add_action("add_meta_boxes", "ScientificArticle_cree_custom_metaboxes");
+    
+    add_action("save_post", "ScientificArticle_article_save");
 }
 
 function ScientificArticle_article_setup_post_type()

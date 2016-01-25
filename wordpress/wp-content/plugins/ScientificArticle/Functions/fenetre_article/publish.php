@@ -9,6 +9,8 @@
 // ici on vas devoir enregistrer l'auteur dans la future BD
 function ScientificArticle_article_save($post_id)
 {
+    
+    
 
     if (get_post_type($post_id) == "sa_article") {
 
