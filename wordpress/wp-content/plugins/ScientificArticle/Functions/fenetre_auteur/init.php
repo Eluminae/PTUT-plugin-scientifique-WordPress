@@ -42,7 +42,7 @@ function ScientificArticle_auteur_setup_post_type()
     register_post_type('SA_auteur', array( // 'SA_auteur' car ScientificArticle_auteur est trop long ^^
         'public' => true,
         'publicity_queryable' => false,
-        'menu_icon'=>'dashicons-id',
+        'menu_icon'=>'dashicons-id',//change l'icon dans le menu https://developer.wordpress.org/resource/dashicons/#media-document les differentes icone
         'labels' => $labels,
         'supports' => array('title', 'thumbnail'),
         
