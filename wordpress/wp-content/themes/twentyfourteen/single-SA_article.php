@@ -13,7 +13,7 @@ get_header(); ?>
 	<main id="main" class="site-main" role="main">
 		<?php
 		// Start the loop.
-                //echo 'Patate2016';
+                echo 'Patate2014';
 		while ( have_posts() ) : the_post();
 
 			// Include the single post content template.
