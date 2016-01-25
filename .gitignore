@@ -1,5 +1,5 @@
-/wordpress/wp-admin/*
-/wordpress/wp-content/languages/*
+/wordpress/wp-admin/
+/wordpress/wp-content/languages/
 /wordpress/wp-content/uploads/
 /.idea/
 /wordpress/.htaccess
