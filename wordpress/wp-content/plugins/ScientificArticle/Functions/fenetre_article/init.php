@@ -41,4 +41,12 @@ function ScientificArticle_article_setup_post_type()
         'labels' => $labels,
         'supports' => array('title', 'thumbnail', 'editor')
     ));
+
+    register_post_type('SA_article', array( // 'SA_article' car ScientificArticle_article est trop long ^^
+        'public' => true,
+        'publicity_queryable' => false,
+        'menu_icon'=>'dashicons-media-document',//change l'icon dans le menu https://developer.wordpress.org/resource/dashicons/#media-document les differentes icone
+        'labels' => $labels,
+        'supports' => array('title', 'thumbnail','editor')
+    ));
 }

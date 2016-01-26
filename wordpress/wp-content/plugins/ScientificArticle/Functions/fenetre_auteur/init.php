@@ -35,13 +35,16 @@ function ScientificArticle_auteur_setup_post_type()
         'new_item' => 'Modifier un auteur', // aucune idée
         'add_new' => 'Ajouter un auteur', // ce qui est ecrit sur les boutons pour ajouter un post
         'add_new_item' => 'Ajouter un auteur', // aucune idée encore
-        'search_items' => 'Rechercher un auteur' // ce qui est ecrit sur le bouton de recherche
+        'search_items' => 'Rechercher un auteur', // ce qui est ecrit sur le bouton de recherche
+        
     );
 
     register_post_type('SA_auteur', array( // 'SA_auteur' car ScientificArticle_auteur est trop long ^^
         'public' => true,
         'publicity_queryable' => false,
+        'menu_icon'=>'dashicons-id',//change l'icon dans le menu https://developer.wordpress.org/resource/dashicons/#media-document les differentes icone
         'labels' => $labels,
-        'supports' => array('title', 'thumbnail')
+        'supports' => array('title', 'thumbnail'),
+        
     ));
 }

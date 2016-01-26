@@ -1,3 +1,4 @@
+
 <?php
 
 // empeche d'acceder à cette page via l'url !
@@ -80,10 +81,10 @@ function pdf_meta_save( $post_ID ){
 }
 
 function ScientificArticle_article_metabox_addauteur($post){
-        $type = 'SA_auteur';
+        $type = 'sa_auteur';
         $args=array(
         'post_type' => $type,
-        'post_status' => 'draft',
+        //'post_status' => 'publish',
         'posts_per_page' => -1,
         'caller_get_posts'=> 1);
 
@@ -102,7 +103,7 @@ function ScientificArticle_article_metabox_addauteur($post){
                 $auteurs  = get_post_meta($post->ID,'_ScientificArticle_article_auteurs',true);
 
                 $auteurs = unserialize($auteurs);
-
+                
 
                 ?>
 
@@ -111,6 +112,7 @@ function ScientificArticle_article_metabox_addauteur($post){
                         <?php
                             if ($auteurs) {
                                 // si il est un auteur, on pré-check la checkbox
+                                
                                 if (in_array(get_the_id(), $auteurs)) {
                                     echo "checked";
                                 }
