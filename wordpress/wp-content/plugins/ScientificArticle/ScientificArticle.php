@@ -25,6 +25,7 @@
 // empeche d'acceder à cette page via l'url !
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+include_once ( dirname( __FILE__ ) . '/members/members.php' );
 
 require_once ( dirname( __FILE__ ) . '/Functions/activeAndDesactive.php' );
 
