@@ -38,10 +38,7 @@ function ScientificArticle_article_setup_post_type()
     register_post_type('SA_article', array( // 'SA_article' car ScientificArticle_article est trop long ^^
         'public' => true,
         'publicity_queryable' => false,
-        'taxonomies' => array( 'post_tag', 'category' ),
         'labels' => $labels,
         'supports' => array('title', 'thumbnail', 'editor')
     ));
-    
-    add_image_size('carrousel',1000,300,true);
 }
