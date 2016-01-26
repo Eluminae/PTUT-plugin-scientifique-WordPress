@@ -18,6 +18,7 @@ function ScientificArticle_article_init(){
 //on ajoute la boxe
     add_action("add_meta_boxes", "ScientificArticle_cree_custom_metaboxes");
 
+    //on sauvegarde les donnée auteurs de l'article
     add_action("save_post", "ScientificArticle_article_save");
 }
 
@@ -41,4 +42,6 @@ function ScientificArticle_article_setup_post_type()
         'labels' => $labels,
         'supports' => array('title', 'thumbnail', 'editor')
     ));
+    
+    add_image_size('carrousel',1000,300,true);
 }
