@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Created by PhpStorm.
@@ -39,7 +40,8 @@ function ScientificArticle_article_setup_post_type()
         'public' => true,
         'publicity_queryable' => false,
         'taxonomies' => array( 'post_tag', 'category' ),
+        'menu_icon'=>'dashicons-media-document',//change l'icon dans le menu https://developer.wordpress.org/resource/dashicons/#media-document les differentes icone
         'labels' => $labels,
-        'supports' => array('title', 'thumbnail', 'editor')
+        'supports' => array('title', 'thumbnail','editor')
     ));
 }

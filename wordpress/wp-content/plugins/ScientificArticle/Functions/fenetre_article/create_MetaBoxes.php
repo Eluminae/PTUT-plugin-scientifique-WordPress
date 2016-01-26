@@ -1,3 +1,4 @@
+
 <?php
 
 // empeche d'acceder à cette page via l'url !
@@ -102,7 +103,7 @@ function ScientificArticle_article_metabox_addauteur($post){
                 $auteurs  = get_post_meta($post->ID,'_ScientificArticle_article_auteurs',true);
 
                 $auteurs = unserialize($auteurs);
-
+                
 
                 ?>
 
@@ -111,6 +112,7 @@ function ScientificArticle_article_metabox_addauteur($post){
                         <?php
                             if ($auteurs) {
                                 // si il est un auteur, on pré-check la checkbox
+                                
                                 if (in_array(get_the_id(), $auteurs)) {
                                     echo "checked";
                                 }
