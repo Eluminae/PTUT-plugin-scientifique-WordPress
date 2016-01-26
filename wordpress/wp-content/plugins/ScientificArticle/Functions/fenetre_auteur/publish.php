@@ -10,6 +10,9 @@
 // ici on vas devoir enregistrer l'auteur dans la future BD
 function ScientificArticle_auteur_save($post_id){
 
+
+
+
     if (get_post_type($post_id) == "sa_auteur") {
         // Checks for input and sanitizes/saves if needed
         if (isset($_POST['auteur_nom'])) {
