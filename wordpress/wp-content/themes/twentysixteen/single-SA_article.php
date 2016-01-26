@@ -13,9 +13,9 @@ get_header(); ?>
 	<main id="main" class="site-main" role="main">
 		<?php
 		// Start the loop.
-                //echo 'Patate2016';
+                //
 		while ( have_posts() ) : the_post();
-
+                        echo 'Patate de début';
 			// Include the single post content template.
 			get_template_part( 'template-parts/content', 'single' );
 
@@ -23,6 +23,17 @@ get_header(); ?>
 			if ( comments_open() || get_comments_number() ) {
 				comments_template();
 			}
+                        
+                        echo '////////////<br />';
+                        
+                        ?>
+                        <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
+                        <?php
+                        the_content();
+                        the_ID();
+                        echo get_the_guid($post_id+1);
+                        
+                        echo '<br />////////////<br />';
 
 			if ( is_singular( 'attachment' ) ) {
 				// Parent post navigation.
@@ -40,6 +51,7 @@ get_header(); ?>
 						'<span class="post-title">%title</span>',
 				) );
 			}
+                        echo 'Patate de fin';
 
 			// End of the loop.
 		endwhile;

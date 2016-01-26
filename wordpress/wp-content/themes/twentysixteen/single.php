@@ -23,6 +23,8 @@ get_header(); ?>
 				comments_template();
 			}
 
+                        
+                        
 			if ( is_singular( 'attachment' ) ) {
 				// Parent post navigation.
 				the_post_navigation( array(
