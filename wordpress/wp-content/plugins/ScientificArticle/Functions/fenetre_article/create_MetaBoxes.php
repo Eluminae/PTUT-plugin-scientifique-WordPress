@@ -81,61 +81,45 @@ function pdf_meta_save( $post_ID ){
 }
 
 function ScientificArticle_article_metabox_addauteur($post){
-        $type = 'sa_auteur';
-        $args=array(
-        'post_type' => $type,
-        //'post_status' => 'publish',
-        'posts_per_page' => -1,
-        'caller_get_posts'=> 1);
+
+    $list_user =get_users( 'role=auteur_scientifique' );
+
+    //print_r($list_user);
+
+    // on recupere les anciens champs
+    $auteurs  = get_post_meta($post->ID,'_ScientificArticle_article_auteurs',true);
+    $auteurs = unserialize($auteurs);
+
+    foreach ( $list_user as $user ) {
+        $id = $user->ID;
+
+        $first_name = get_user_meta($id, 'first_name', true);
+        $last_name = get_user_meta($id, 'last_name', true);
+
+        $chaine = "$first_name $last_name";
+
+        ?>
+            <input name="meta-checkbox[]" type="checkbox" value="<?php echo $id ?>"
+
+                <?php
 
 
-        // on cherche à obtenir la liste de tous les auteurs
-        $my_query = new WP_Query($args);
+                if ($auteurs) {
+                    // si il est un auteur, on pré-check la checkbox
 
-        if ( $my_query->have_posts() ) {
+                    if (in_array($id, $auteurs)) {
+                        echo "checked";
+                    }
+                }
 
-            while ( $my_query->have_posts() ) {
-                $my_query->the_post();
-                $author = get_post_meta(get_the_id(), "_ScientificArticle_auteur_nom");
-
-
-               // on recupere les anciens champs
-                $auteurs  = get_post_meta($post->ID,'_ScientificArticle_article_auteurs',true);
-
-                $auteurs = unserialize($auteurs);
-                
 
                 ?>
 
-                    <input name="meta-checkbox[]" type="checkbox" value="<?php echo esc_html(get_the_id()) ?>"
-
-                        <?php
-                            if ($auteurs) {
-                                // si il est un auteur, on pré-check la checkbox
-                                
-                                if (in_array(get_the_id(), $auteurs)) {
-                                    echo "checked";
-                                }
-                            }
-                        ?>
-
-                    >
-                <label><?php echo $author[0]; ?></label><br/>
-
-                <?php
-            }
-
-            ?>
-            <?php
-        }
+            >
+            <label><?php echo esc_html($chaine); ?></label><br/>
+        <?php
+    }
 
 
 
-
-        ?>
-
-
-
-
-<?php
 }
