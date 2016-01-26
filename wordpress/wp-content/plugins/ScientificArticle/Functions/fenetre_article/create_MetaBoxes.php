@@ -81,10 +81,10 @@ function pdf_meta_save( $post_ID ){
 }
 
 function ScientificArticle_article_metabox_addauteur($post){
-        $type = 'SA_auteur';
+        $type = 'sa_auteur';
         $args=array(
         'post_type' => $type,
-        'post_status' => 'draft',
+        //'post_status' => 'publish',
         'posts_per_page' => -1,
         'caller_get_posts'=> 1);
 
