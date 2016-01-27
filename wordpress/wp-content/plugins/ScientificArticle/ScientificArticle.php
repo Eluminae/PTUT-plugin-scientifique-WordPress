@@ -39,6 +39,17 @@ function ScientificArticle_activate() {
 
     add_role( 'auteur_scientifique', 'Auteur Scientifique', $capabilities );
 
+    $role = get_role( 'administrator' );
+
+
+    $role->add_cap( 'publish_as' );
+    $role->add_cap( 'edit_as' );
+    $role->add_cap( 'edit_others_as' );
+    $role->add_cap( 'read_private_as' );
+    $role->add_cap( 'delete_as' );
+    $role->add_cap( 'delete_others_as' );
+
+
     // Clear the permalinks to remove our post type's rules
     flush_rewrite_rules();
 }
@@ -48,6 +59,15 @@ register_activation_hook( __FILE__, 'ScientificArticle_activate' );
 
 function ScientificArticle_deactivate() {
     remove_role( 'auteur_scientifique' );
+
+    $role = get_role( 'administrator' );
+
+    $role->remove_cap( 'publish_as' );
+    $role->remove_cap( 'edit_as' );
+    $role->remove_cap( 'edit_others_as' );
+    $role->remove_cap( 'read_private_as' );
+    $role->remove_cap( 'delete_as' );
+    $role->remove_cap( 'delete_others_as' );
 
     // Clear the permalinks to remove our post type's rules
     flush_rewrite_rules();
