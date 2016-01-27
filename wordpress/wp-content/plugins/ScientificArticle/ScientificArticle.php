@@ -60,6 +60,9 @@ register_activation_hook( __FILE__, 'ScientificArticle_activate' );
 function ScientificArticle_deactivate() {
     remove_role( 'auteur_scientifique' );
 
+
+    
+
     $role = get_role( 'administrator' );
 
     $role->remove_cap( 'publish_as' );
