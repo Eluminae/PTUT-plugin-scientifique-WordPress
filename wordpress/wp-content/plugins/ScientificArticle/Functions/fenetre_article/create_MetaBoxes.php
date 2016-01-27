@@ -43,7 +43,8 @@ function ScientificArticle_article_metabox_addauteur($post){
 
         ?>
 
-        <input name="meta-checkbox[]" type="checkbox" value="<?php echo $id_curr_user ?>" disabled="disabled" checked>
+        <input name="meta-checkbox[]" type="checkbox" disabled  checked>
+        <input name="meta-checkbox[]" type="hidden" value="<?php echo $id_curr_user ?>">
         <label><?php echo esc_html($chaine); ?></label><br/>
 
         <?php
