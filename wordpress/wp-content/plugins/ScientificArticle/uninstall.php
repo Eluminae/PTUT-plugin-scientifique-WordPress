@@ -21,10 +21,6 @@ if (is_array($posts)) {
             'post_type'   => 'attachment',
             'numberposts' => -1,
         );
-        $childs=get_children($args2);
-        foreach($childs as $child){
-            wp_delete_post( $child->ID, true);
-        }
         wp_delete_post( $post->ID, true);
     }
 }
