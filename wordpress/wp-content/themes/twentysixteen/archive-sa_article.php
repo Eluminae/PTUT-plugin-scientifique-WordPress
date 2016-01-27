@@ -10,10 +10,12 @@
 get_header();
 
 if (have_posts()) : while (have_posts()) : the_post();
+
         echo '<br /><br />';
         ?>
         <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
             <h1>
+
                 <?php
                 echo the_title();
                 ?>
@@ -48,7 +50,9 @@ if (have_posts()) : while (have_posts()) : the_post();
         $first_attachment = array_shift($attachments);
         echo wp_get_attachment_image($first_attachment->ID, array(200, 200)); //afiche l'image en 500x500
         ?></a><?php
-            echo substr(get_the_content());
+             $resum=get_the_content();
+                    
+            echo substr($resum,0,25);
 
             echo '<br /><br />';
 

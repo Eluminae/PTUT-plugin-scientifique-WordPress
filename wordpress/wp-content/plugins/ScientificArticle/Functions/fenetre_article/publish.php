@@ -20,6 +20,10 @@ function ScientificArticle_article_save($post_id)
 
             update_post_meta($post_id, '_ScientificArticle_article_auteurs', serialize($liste_auteur));
         }
+        else {
+            // ici il faut supprimer le champ s'il existe
+            delete_post_meta($post_id, '_ScientificArticle_article_auteurs');
+        }
 
     }
     

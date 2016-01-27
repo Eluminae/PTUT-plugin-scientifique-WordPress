@@ -16,11 +16,6 @@ $args = array(
 $posts = get_posts( $args );
 if (is_array($posts)) {
     foreach ($posts as $post) {
-        $args2 = array(
-            'post_parent' => $post->ID,
-            'post_type'   => 'attachment',
-            'numberposts' => -1,
-        );
         wp_delete_post( $post->ID, true);
     }
 }
