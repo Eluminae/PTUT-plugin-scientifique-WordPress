@@ -7,18 +7,6 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 include_once($_SERVER["DOCUMENT_ROOT"].'/wp-admin/includes/template.php');
 
 
-//contenu de la boite avec l'upload de fichier pdf
-function ScientificArticle_article_pdf_metabox($post){
-    $url=  get_post_meta( $post->ID, '_url_pdf', true );
-    if($url!=null){
-        ?>  <label>Fichier actuellement lié:  <?php echo basename($url);?></label></br> <?php
-    }
-    ?>
-    <input class="file" type="file" id="url_pdf" name="url_pdf" value=""/>
-  <?php
-}
-
-
 //ajoute toutes les meta_boxes
 function ScientificArticle_cree_custom_metaboxes()
 {
@@ -28,9 +16,7 @@ function ScientificArticle_cree_custom_metaboxes()
 
     add_meta_box('postAuteur', 'Auteurs de cet article', 'ScientificArticle_article_metabox_addauteur','SA_article', 'advanced', 'high');
 
-    //boite pour lier un fichier pdf à l'article
-    add_meta_box( "url_du_pdf", "Fichier à télécharger", "ScientificArticle_article_pdf_metabox",'SA_article', 'advanced', 'high' );
-    
+
     add_action("save_post", "ScientificArticle_pdf_meta_save");
 }
 
