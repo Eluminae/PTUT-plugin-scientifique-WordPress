@@ -18,7 +18,21 @@ if (have_posts()) : while (have_posts()) : the_post();
                     <?php
                     echo the_title();
                     ?>
-                    <br /></h1>
+                      
+                    <br/></h1>
+               <?php  $tab = get_post_meta(get_the_ID(),'_ScientificArticle_article_auteurs', true) ;// a modifier pour afficher l'autheur et non l'admina?>
+               <?php 
+                   $ids = unserialize($tab);
+                   foreach ($ids as $id){
+                       $user = get_user_by( 'id', $id );
+                       
+                       echo "$user->first_name $user->last_name";
+                   }
+               
+?>
+                
+                <br/>
+                <br/>
                 <?php
                 $attachments = get_children(array('post_parent' => get_the_ID(), 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order'));
                 if (!is_array($attachments))
