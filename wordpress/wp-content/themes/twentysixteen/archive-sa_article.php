@@ -29,7 +29,7 @@ if (have_posts()) : while (have_posts()) : the_post();
                        echo "$user->first_name $user->last_name";
                    }
                
-?>
+                ?>
                 
                 <br/>
                 <br/>

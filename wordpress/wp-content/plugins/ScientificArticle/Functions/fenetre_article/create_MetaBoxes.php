@@ -39,14 +39,16 @@ function ScientificArticle_article_metabox_addauteur($post){
     // on gere l'ajout de l'id de l'user current
 
 
-    ?>
+    if ( !is_super_admin() ) {
 
+        ?>
 
-    <input name="meta-checkbox[]" type="checkbox" value="<?php echo $id_curr_user ?>" disabled="disabled" checked>
-    <label><?php echo esc_html($chaine); ?></label><br/>
-    
+        <input name="meta-checkbox[]" type="checkbox" value="<?php echo $id_curr_user ?>" disabled="disabled" checked>
+        <label><?php echo esc_html($chaine); ?></label><br/>
 
-    <?php
+        <?php
+    }
+
     foreach ( $list_user as $user ) {
         $id = $user->ID;
 
