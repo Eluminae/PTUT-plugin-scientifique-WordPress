@@ -20,7 +20,17 @@ if (have_posts()) : while (have_posts()) : the_post();
                     ?>
                       
                     <br/></h1>
-               <?php                        get_post_meta(the_author_nickname()) ;// a modifier pour afficher l'autheur et non l'admina?>
+               <?php  $tab = get_post_meta(get_the_ID(),'_ScientificArticle_article_auteurs', true) ;// a modifier pour afficher l'autheur et non l'admina?>
+               <?php 
+                   $ids = unserialize($tab);
+                   foreach ($ids as $id){
+                       $user = get_user_by( 'id', $id );
+                       
+                       echo "$user->first_name $user->last_name";
+                   }
+               
+?>
+                
                 <br/>
                 <br/>
                 <?php
