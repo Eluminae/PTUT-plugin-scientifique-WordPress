@@ -11,15 +11,25 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-           <?php  $tab = get_post_meta(get_the_ID(),'_ScientificArticle_article_auteurs', true) ;// a modifier pour afficher l'autheur et non l'admina?>
-               <?php 
-                   $ids = unserialize($tab);
-                   foreach ($ids as $id){
-                       $user = get_user_by( 'id', $id );
-                       
-                       echo "$user->first_name $user->last_name";
-                   }
-                   ?>
+           
+              <?php $tab = get_post_meta(get_the_ID(), '_ScientificArticle_article_auteurs', true); // a modifier pour afficher l'autheur et non l'admina ?>
+            <?php
+            $ids = unserialize($tab);
+            if ($ids != null) {
+                
+                foreach ($ids as $id) {
+                    $count ++;
+                }
+                echo 'Auteurs: ';
+                foreach ($ids as $id) {
+                    $user = get_user_by('id', $id);
+                    
+                    echo "$user->first_name $user->last_name  | ";
+                }
+            } else {
+                echo 'Pas d\'auteur pour cet article';
+            }
+            ?>
 	</header><!-- .entry-header -->
 
 	<?php twentysixteen_excerpt(); ?>

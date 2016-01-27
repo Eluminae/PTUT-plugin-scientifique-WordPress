@@ -27,10 +27,7 @@ get_header();
              
               }
              
-            
-//            echo '<br />////////////<br />';
-//            
-//            echo '<br />////////////<br />';
+
 
             
                 if (is_singular('attachment')) {
