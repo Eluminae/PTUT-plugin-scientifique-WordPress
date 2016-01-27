@@ -31,34 +31,57 @@ function ScientificArticle_article_metabox_addauteur($post){
     $auteurs  = get_post_meta($post->ID,'_ScientificArticle_article_auteurs',true);
     $auteurs = unserialize($auteurs);
 
+    $current_user = wp_get_current_user();
+    $id_curr_user = $current_user->ID;
+    $chaine = "$current_user->first_name $current_user->last_name";
+
+
+    // on gere l'ajout de l'id de l'user current
+
+
+    ?>
+
+
+    <input name="meta-checkbox[]" type="checkbox" value="<?php echo $id_curr_user ?>" disabled="disabled" checked>
+    <label><?php echo esc_html($chaine); ?></label><br/>
+    
+
+    <?php
     foreach ( $list_user as $user ) {
         $id = $user->ID;
 
-        $first_name = get_user_meta($id, 'first_name', true);
-        $last_name = get_user_meta($id, 'last_name', true);
+        if ($id_curr_user != $id) {
 
-        $chaine = "$first_name $last_name";
+            $first_name = get_user_meta($id, 'first_name', true);
+            $last_name = get_user_meta($id, 'last_name', true);
 
-        ?>
-        <input name="meta-checkbox[]" type="checkbox" value="<?php echo $id ?>"
-
-            <?php
-
-
-            if ($auteurs) {
-                // si il est un auteur, on pré-check la checkbox
-
-                if (in_array($id, $auteurs)) {
-                    echo "checked";
-                }
-            }
-
+            $chaine = "$first_name $last_name";
 
             ?>
 
-        >
-        <label><?php echo esc_html($chaine); ?></label><br/>
-        <?php
+
+            <input name="meta-checkbox[]" type="checkbox" value="<?php echo $id ?>"
+
+                <?php
+
+
+                if ($auteurs) {
+                    // si il est un auteur, on pré-check la checkbox
+
+                    if (in_array($id, $auteurs)) {
+                        echo "checked";
+                    }
+                }
+
+
+                ?>
+
+            >
+            <label><?php echo esc_html($chaine); ?></label><br/>
+            <?php
+        }
+
+
     }
 
 
