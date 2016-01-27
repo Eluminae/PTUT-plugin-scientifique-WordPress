@@ -27,3 +27,23 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 require_once ( dirname( __FILE__ ) . '/Functions/activeAndDesactive.php' );
 
+
+function ScientificArticle_activate() {
+
+    $capabilities = array(
+        'publish_as' => true,
+        'edit_as' => true,
+        'delete_as' => true,
+        'upload_files' => true,
+    );
+
+    add_role( 'auteur_scientifique', 'Auteur Scientifique', $capabilities );
+}
+register_activation_hook( __FILE__, 'ScientificArticle_activate' );
+
+
+
+function ScientificArticle_deactivate() {
+    remove_role( 'auteur_scientifique' );
+}
+register_deactivation_hook( __FILE__, 'ScientificArticle_deactivate' );
