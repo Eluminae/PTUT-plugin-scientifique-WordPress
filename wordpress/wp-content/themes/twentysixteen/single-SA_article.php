@@ -16,7 +16,7 @@ get_header();
         //
         while (have_posts()) : the_post();
             echo 'Début de l\'affichage d\'un seul article';
-            /*
+            
               // Include the single post content template.
               get_template_part('template-parts/content', 'single');
 
@@ -24,11 +24,11 @@ get_header();
               if (comments_open() || get_comments_number()) {
               comments_template();
               }
-             */
+             
             
-            echo '<br />////////////<br />';
-            
-            echo '<br />////////////<br />';
+//            echo '<br />////////////<br />';
+//            
+//            echo '<br />////////////<br />';
 
             
                 if (is_singular('attachment')) {
