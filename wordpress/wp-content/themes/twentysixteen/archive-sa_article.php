@@ -18,7 +18,11 @@ if (have_posts()) : while (have_posts()) : the_post();
                     <?php
                     echo the_title();
                     ?>
-                    <br /></h1>
+                      
+                    <br/></h1>
+               <?php                        get_post_meta(the_author_nickname()) ;// a modifier pour afficher l'autheur et non l'admina?>
+                <br/>
+                <br/>
                 <?php
                 $attachments = get_children(array('post_parent' => get_the_ID(), 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order'));
                 if (!is_array($attachments))

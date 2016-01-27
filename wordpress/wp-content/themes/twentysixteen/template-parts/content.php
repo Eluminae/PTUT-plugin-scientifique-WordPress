@@ -15,6 +15,9 @@
 		<?php endif; ?>
 
 		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+                      
+                <?php                        get_post_meta(the_author_nickname()) ;?> 
+                        
 	</header><!-- .entry-header -->
 
 	<?php twentysixteen_excerpt(); ?>
