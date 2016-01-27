@@ -38,6 +38,9 @@ function ScientificArticle_activate() {
     );
 
     add_role( 'auteur_scientifique', 'Auteur Scientifique', $capabilities );
+
+    // Clear the permalinks to remove our post type's rules
+    flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'ScientificArticle_activate' );
 
@@ -45,5 +48,8 @@ register_activation_hook( __FILE__, 'ScientificArticle_activate' );
 
 function ScientificArticle_deactivate() {
     remove_role( 'auteur_scientifique' );
+
+    // Clear the permalinks to remove our post type's rules
+    flush_rewrite_rules();
 }
 register_deactivation_hook( __FILE__, 'ScientificArticle_deactivate' );
