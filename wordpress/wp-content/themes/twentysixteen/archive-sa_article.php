@@ -44,7 +44,7 @@ if (have_posts()) : while (have_posts()) : the_post();
                 foreach ($ids as $id) {
                     $user = get_user_by('id', $id);
                     echo "<a href='$user->user_url' >$user->first_name $user->last_name </a>";
-                    if ($count > 1) echo ",";
+                    if ($count > 1) echo ", ";
                     $count--;
                 }
             } else {
