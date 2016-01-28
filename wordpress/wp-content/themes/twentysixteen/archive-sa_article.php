@@ -56,14 +56,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 
 
         <?php
-             $resum=get_the_content();
-                    
-            $resum=substr($resum,0,100);
-            
-            $resum.='...';
-            
-            echo $resum;
-
+             the_excerpt();
             echo '<br /><br />';
 
         endwhile;
