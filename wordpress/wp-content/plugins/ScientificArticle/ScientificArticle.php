@@ -30,24 +30,29 @@ require_once ( dirname( __FILE__ ) . '/Functions/activeAndDesactive.php' );
 
 function ScientificArticle_activate() {
 
-    $capabilities = array(
-        'publish_as' => true,
-        'edit_as' => true,
-        'delete_as' => true,
-        'upload_files' => true,
-    );
 
-    add_role( 'auteur_scientifique', 'Auteur Scientifique', $capabilities );
+    add_role( 'auteur_scientifique', 'Auteur Scientifique' );
+
+
+    $role = get_role( 'auteur_scientifique' );
+    $role->add_cap( 'publish_as_articles' );
+    $role->add_cap( 'edit_as_articles' );
+    $role->add_cap( 'read_private_as_articles' );
+    $role->add_cap( 'edit_as_article' );
+    $role->add_cap( 'delete_as_article' );
+    $role->add_cap( 'read_as_article' );
+    $role->add_cap( 'upload_files' );
+
 
     $role = get_role( 'administrator' );
-
-
-    $role->add_cap( 'publish_as' );
-    $role->add_cap( 'edit_as' );
-    $role->add_cap( 'edit_others_as' );
-    $role->add_cap( 'read_private_as' );
-    $role->add_cap( 'delete_as' );
-    $role->add_cap( 'delete_others_as' );
+    $role->add_cap( 'publish_as_articles' );
+    $role->add_cap( 'edit_as_articles' );
+    $role->add_cap( 'edit_others_as_articles' );
+    $role->add_cap( 'read_private_as_articles' );
+    $role->add_cap( 'edit_as_article' );
+    $role->add_cap( 'delete_as_article' );
+    $role->add_cap( 'delete_others_as_article' );
+    $role->add_cap( 'read_as_article' );
 
 
     // Clear the permalinks to remove our post type's rules
@@ -61,16 +66,15 @@ function ScientificArticle_deactivate() {
     remove_role( 'auteur_scientifique' );
 
 
-    
-
     $role = get_role( 'administrator' );
-
-    $role->remove_cap( 'publish_as' );
-    $role->remove_cap( 'edit_as' );
-    $role->remove_cap( 'edit_others_as' );
-    $role->remove_cap( 'read_private_as' );
-    $role->remove_cap( 'delete_as' );
-    $role->remove_cap( 'delete_others_as' );
+    $role->remove_cap( 'publish_as_articles' );
+    $role->remove_cap( 'edit_as_articles' );
+    $role->remove_cap( 'edit_others_as_articles' );
+    $role->remove_cap( 'read_private_as_articles' );
+    $role->remove_cap( 'edit_as_article' );
+    $role->remove_cap( 'delete_as_article' );
+    $role->remove_cap( 'delete_others_as_article' );
+    $role->remove_cap( 'read_as_article' );
 
     // Clear the permalinks to remove our post type's rules
     flush_rewrite_rules();

@@ -40,3 +40,11 @@ $wpdb->query(
 		"
 );
 
+$wpdb->query(
+    "
+        DELETE FROM $wpdb->wp_comments
+        WHERE comment_post_ID
+        NOT IN (SELECT id FROM wp_posts)
+		"
+);
+

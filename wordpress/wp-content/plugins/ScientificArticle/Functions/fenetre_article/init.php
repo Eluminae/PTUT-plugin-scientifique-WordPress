@@ -44,18 +44,17 @@ function ScientificArticle_article_setup_post_type()
             'publicity_queryable' => false,
             'menu_icon'=>'dashicons-media-document',//change l'icon dans le menu https://developer.wordpress.org/resource/dashicons/#media-document les differentes icone
             'labels' => $labels,
-            'supports' => array('title', 'thumbnail', 'editor'),
-            'capability_type' => 'article_scientifique',
+            'supports' => array('title', 'thumbnail', 'editor', 'comments'),
+            'capability_type' => 'as_article',
             'capabilities' => array(
-                'publish_posts' => 'publish_as',
-                'edit_posts' => 'edit_as',
-                'edit_others_posts' => 'edit_others_as',
-                'delete_posts' => 'delete_as',
-                'delete_others_posts' => 'delete_others_as',
-                'read_private_posts' => 'read_private_as',
-                'edit_post' => 'edit_as',
-                'delete_post' => 'delete_as',
-                'read_post' => 'read_as',
+                'publish_posts' => 'publish_as_articles',
+                'edit_posts' => 'edit_as_articles',
+                'edit_others_posts' => 'edit_others_as_articles',
+                'read_private_posts' => 'read_private_as_articles',
+                'edit_post' => 'edit_as_article',
+                'delete_post' => 'delete_as_article',
+                'delete_others_post' => 'delete_others_as_article',
+                'read_post' => 'read_as_article',
             ),
 
         ));
