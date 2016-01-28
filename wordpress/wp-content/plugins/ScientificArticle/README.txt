@@ -12,7 +12,7 @@
         2-Désinstallation           l.24-31
         3-Ajout d'un auteur         l.38-46
         4-Affichage d'un article    l.47-56
-        5-Paramètrer affichage      l.56
+        5-Paramètrer affichage      l.57
 */
 
 
