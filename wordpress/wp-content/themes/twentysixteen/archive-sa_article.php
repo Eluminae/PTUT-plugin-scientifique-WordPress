@@ -11,7 +11,6 @@ get_header();
 
 if (have_posts()) : while (have_posts()) : the_post();
 
-        echo '<br /><br />';
         ?>
         <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
             <h1>
@@ -20,11 +19,8 @@ if (have_posts()) : while (have_posts()) : the_post();
                 echo the_title();
                 ?>
 
-                <br/></h1>
+                </h1>
 
-
-            <br/>
-            <br/>
         </a>
             <?php $tab = get_post_meta(get_the_ID(), '_ScientificArticle_article_auteurs', true); // a modifier pour afficher l'autheur et non l'admina ?>
             <?php
@@ -43,7 +39,6 @@ if (have_posts()) : while (have_posts()) : the_post();
             }
             ?>
             <br/>
-            <br/>
             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
         <?php
         $attachments = get_children(array('post_parent' => get_the_ID(), 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order'));
@@ -57,7 +52,6 @@ if (have_posts()) : while (have_posts()) : the_post();
 
         <?php
              the_excerpt();
-            echo '<br /><br />';
 
         endwhile;
     endif;
