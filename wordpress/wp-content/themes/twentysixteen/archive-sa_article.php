@@ -27,16 +27,14 @@ if (have_posts()) : while (have_posts()) : the_post();
             $ids = unserialize($tab);
             if ($ids != null) {
                 $count = count($ids);
-                echo 'Auteurs: ';
                 foreach ($ids as $id) {
                     $user = get_user_by('id', $id);
-                    echo "<a href='$user->user_url' >$user->first_name $user->last_name </a>";
-                    if ($count > 1) echo ", ";
-                    $count--;
+                    echo '<DIV class="auteur"><a href='.$user->user_url.' >'.$user->first_name.' '. $user->last_name.' </a></div>';
                 }
             } else {
                 echo 'Pas d\'auteur pour cet article';
             }
+            echo '<br /><br />';
             ?>
             <br/>
             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >

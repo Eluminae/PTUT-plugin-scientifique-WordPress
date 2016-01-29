@@ -23,16 +23,15 @@ get_header();
         $ids = unserialize($tab);
         if ($ids != null) {
             $count = count($ids);
-            echo 'Auteurs: ';
+            //echo 'Auteurs: ';
             foreach ($ids as $id) {
                 $user = get_user_by('id', $id);
-                echo "<a href='$user->user_url' >$user->first_name $user->last_name </a>";
-                if ($count > 1) echo ",";
-                $count--;
+                echo '<DIV class="auteur"><a href='.$user->user_url.' >'.$user->first_name.' '. $user->last_name.' </a></div>';
             }
         } else {
             echo 'Pas d\'auteur pour cet article';
         }
+        echo '<br /><br />';
                 
               // Include the single post content template.
               get_template_part('template-parts/content', 'single');
