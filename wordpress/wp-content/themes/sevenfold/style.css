@@ -9,3 +9,63 @@ License: GNU General Public License version 3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: light, theme-options,creative,responsive,unique
 */
+
+.auteur {
+    text-align: center; margin: 0px 10px 0px 10px; width: 150px; float: left; display: inline;
+    //background-color: green;
+}
+.auteur:hover {
+    background-image: -webkit-linear-gradient(bottom, rgb(200,200,200) 0%, rgb(250,250,250) 100%);
+    background-image:    -moz-linear-gradient(bottom, rgb(200,200,200) 0%, rgb(250,250,250) 100%);
+    background-image:     -ms-linear-gradient(bottom, rgb(200,200,200) 0%, rgb(250,250,250) 100%);
+    background-image:      -o-linear-gradient(bottom, rgb(200,200,200) 0%, rgb(250,250,250) 100%);
+    background-image:         linear-gradient(bottom, rgb(200,200,200) 0%, rgb(250,250,250) 100%);
+    filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#fafafa', EndColorStr='#e6e6e6');
+    -moz-border-radius: 8px;-webkit-border-radius:8px;border-radius:8px;
+}
+.auteur a { 
+    margin: 0px 0px 1px;
+    padding: 7px 13px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    -moz-border-radius: 8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+
+}
+
+.movie {
+    background: rgb(60, 66, 66);
+    color: rgb(211, 211, 211) ;
+    margin: 0px  0px 10px 0px;
+    padding: 0px 0px;
+    width: 482px;
+    float: left;
+    border: 1px solid rgb(10, 10, 10);
+    -moz-border-radius: 8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+.pdf {
+    background: rgb(255, 255, 255);
+    margin: 5px 5px 5px 5px;
+    padding: 0px 0px 0px 0px;
+    float: left;
+    text-align: center;
+    border: 1px solid rgb(10, 10, 10);
+}
+
+.caroussel{
+    background: rgb(60, 66, 66);
+    color: rgb(211, 211, 211) ;
+    margin: 0px 0px 10px 0px;
+    padding: 0px; width: 978px;
+    border: 1px solid rgb(10, 10, 10);
+    float: left; text-align: left;
+    border: solid 1px rgb(10, 10, 10);
+    -moz-border-radius: 8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
