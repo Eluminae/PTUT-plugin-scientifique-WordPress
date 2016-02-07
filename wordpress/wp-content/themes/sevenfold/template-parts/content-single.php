@@ -16,6 +16,8 @@
 
 	
 
+        <?php the_post_thumbnail(); ?>
+
 	<div class="entry-content">
 		<?php
 			the_content();
@@ -36,7 +38,7 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		
+		<?php the_meta(); ?>
 		<?php
 			edit_post_link(
 				sprintf(
