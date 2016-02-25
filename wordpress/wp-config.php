@@ -20,6 +20,8 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
+//define('WP_CACHE', true); //Added by WP-Cache Manager
+define( 'WPCACHEHOME', 'C:\xampp\htdocs\PTUT-plugin-scientifique-WordPress\wordpress\wp-content\plugins\wp-super-cache/' ); //Added by WP-Cache Manager
 define('DB_NAME', 'DB_WordPress');
 
 /** MySQL database username */

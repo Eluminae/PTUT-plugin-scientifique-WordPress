@@ -1,8 +1,10 @@
-<div id="post-<?php the_ID(); ?>" <?php post_class("blog-entry"); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class("sa_article"); ?>>
     <div class="entry-header">
         <h1><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
     </div>
+    <div class="entry-cover">
     <?php tt_video_or_image_featured()?>
+    </div>
     <div class="entry-content">
         <div class="entry-details">
             <ul>
@@ -39,5 +41,5 @@
                 the_content('<a href="'.get_the_permalink().'" class="button-3">'. __('Read more','sevenfold') .'</a>');
             }
         ?>
-    </div>
+        </div>
 </div>
