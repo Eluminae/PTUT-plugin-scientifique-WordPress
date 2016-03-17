@@ -31,13 +31,8 @@
             </ul>
         </div>
         <?php
-            $excerpt = get_the_content();
-            if(!empty($excerpt)){
-                the_content();
-                echo '<a href="'.get_the_permalink().'" class="button-3">' . __('Read more','sevenfold') . '</a>';
-            }else{
-                the_content('<a href="'.get_the_permalink().'" class="button-3">'. __('Read more','sevenfold') .'</a>');
-            }
+            the_content();
+
         ?>
     </div>
 </div>
