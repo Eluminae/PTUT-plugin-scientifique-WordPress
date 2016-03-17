@@ -36,3 +36,18 @@
         ?>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    $("#video>iframe").height($("#video>iframe").width()/1.75);
+
+    $( window ).resize(function() {
+        $("#video>iframe").height($("#video>iframe").width()/1.75);
+    });
+
+    $("#video").after("<div class=\"clearfix\"></div>");
+
+    $("#gallery").after("<div class=\"clearfix\"></div>");
+</script>
