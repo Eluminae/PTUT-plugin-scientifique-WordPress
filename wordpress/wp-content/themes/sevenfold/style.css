@@ -24,29 +24,16 @@ Tags: light, theme-options,creative,responsive,unique
     filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#fafafa', EndColorStr='#e6e6e6');
     -moz-border-radius: 8px;-webkit-border-radius:8px;border-radius:8px;
 }
-.auteur a { 
+.auteur a {
     margin: 0px 0px 1px;
     padding: 7px 13px;
     font-weight: bold;
     text-decoration: none;
     display: block;
     -moz-border-radius: 8px;
-    -webkit-border-radius:8px;
-    border-radius:8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
 
-}
-
-.movie {
-    background: rgb(60, 66, 66);
-    color: rgb(211, 211, 211) ;
-    margin: 0px  0px 10px 0px;
-    padding: 0px 0px;
-    width: 482px;
-    float: left;
-    border: 1px solid rgb(10, 10, 10);
-    -moz-border-radius: 8px;
-    -webkit-border-radius:8px;
-    border-radius:8px;
 }
 
 .pdf {
@@ -72,3 +59,37 @@ Tags: light, theme-options,creative,responsive,unique
     -webkit-border-radius:8px;
     border-radius:8px;
 }
+
+#abstracts {
+    width: 46%;
+    float: left;
+    text-align: justify;
+}
+
+#video  {
+    width: 46%;
+    float: right;
+}
+
+#gallery p {
+    width: 50%;
+    display: inline;
+    float: left;
+}
+
+#gallery p img{
+    width: 95%;
+}
+
+.clearfix {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.col-md-8 {
+    width: 100%;
+}
+
