@@ -7,19 +7,19 @@
 
 
 
-get_header();
+
 
 if (have_posts()) : while (have_posts()) : the_post();
 
         ?>
         <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
             <h1>
-
-                <?php
-                echo the_title();
-                ?>
-
-                </h1>
+                
+                    <?php
+                    echo the_title();
+                    ?>
+                
+            </h1>
 
         </a>
             <?php $tab = get_post_meta(get_the_ID(), '_ScientificArticle_article_auteurs', true); // a modifier pour afficher l'autheur et non l'admina ?>
