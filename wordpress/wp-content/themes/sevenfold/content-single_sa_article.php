@@ -41,13 +41,21 @@
 
 <script>
 
-    $("#video>iframe").height($("#video>iframe").width()/1.75);
-
-    $( window ).resize(function() {
+    if ($( "#video" ).length) {
         $("#video>iframe").height($("#video>iframe").width()/1.75);
-    });
 
-    $("#video").after("<div class=\"clearfix\"></div>");
+        $(window).resize(function () {
+            $("#video>iframe").height($("#video>iframe").width() / 1.75);
+        });
 
-    $("#gallery").after("<div class=\"clearfix\"></div>");
+        $("#video").after("<div class=\"clearfix\"></div>");
+    }
+    else {
+        $("#abstracts").width("100%");
+
+        $("#abstracts").after("<div class=\"clearfix\"></div>");
+    }
+
+    $("#galery").after("<div class=\"clearfix\"></div>");
+
 </script>
